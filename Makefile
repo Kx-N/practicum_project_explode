@@ -1,6 +1,6 @@
 MCU=atmega328p
 F_CPU=16000000L
-TARGET=passing_massage.hex
+TARGET=passing_message.hex
 OBJS=./usbdrv.o ./usbdrvasm.o
 CFLAGS=-Wall -Os -DF_CPU=$(F_CPU) -Iusbdrv -I. -mmcu=$(MCU)
 
