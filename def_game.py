@@ -1,6 +1,6 @@
 import random
-from practicum import find_mcu_boards, McuBoard
 from time import sleep
+from practicum import find_mcu_boards, McuBoard
 import lcddriver
 
 lcd = lcddriver.lcd()
@@ -473,14 +473,6 @@ def LDR(fail,life):
             y = stateL[0]
             z = stateL[1]
             bot = (y<<8)
-            #if(y == 0):
-             #   bot = 0
-            #elif(y == 1):
-             #   bot = 256
-            #elif(y == 2):
-             #   bot = 512
-            #elif(y == 3):
-             #   bot = 768
             get_light = (bot | z)
             
             if(get_light <= 170):
