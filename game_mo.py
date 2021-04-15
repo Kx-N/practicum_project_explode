@@ -1,11 +1,11 @@
 import random
-from def_game_mo import ABC_game, AmongUs_game, Mos, LDR
-from practicum import find_mcu_boards, McuBoard
 from time import sleep ,time
+import threading
+from def_game import ABC_game, AmongUs_game, Mos, LDR
+from time_game import timer
+from practicum import find_mcu_boards, McuBoard
 import lcddriver
 import os
-from test_time import timer
-import threading
 
 
 def game(fail,life):
@@ -48,6 +48,7 @@ def game(fail,life):
         lcd.lcd_clear()
     os._exit(0)
 
+    
 lcd = lcddriver.lcd()
 devices = find_mcu_boards()
 mcu = McuBoard(devices[0])
@@ -56,7 +57,6 @@ life = 3
 fail = 0
 countdown = threading.Thread(target=timer)
 playgame = threading.Thread(target=game, args=[fail, life])
-
 
 lcd.lcd_display_string(" "*5+"Boombitxx",2)
 lcd.lcd_display_string(" "*2+"Any Key To Start",4)
@@ -84,8 +84,7 @@ countdown.join()
 lcd.lcd_clear()
 mcu.usb_write(11,value=1)
 lcd.lcd_display_string(" "*5+"Game Over",2)
-time.sleep(3)
+sleep(3)
 mcu.usb_write(11,value=0)
 lcd.lcd_clear()
 os._exit(0)
-
